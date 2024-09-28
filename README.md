@@ -10,28 +10,25 @@ This software aims to offer an enjoyable gameplay experience and help me further
 
 **Software Demo Video:** [Tic Tac Toe Game Demo](https://youtu.be/YOUR_DEMO_LINK)
 
-## Game Features
+## Web Pages
 
-1. **Two-player Mode:**
-   - Play against a friend, taking turns to place your markers on the board.
+1. **Home Page**:
+   - **Description**: The home page serves as the main entry point for users. It displays a brief description of the game and allows players to start a new game. The page also features a leaderboard that dynamically shows the top 5 players with the most wins.
+   - **Dynamic Elements**:
+     - **Leaderboard**: The top 5 players, along with their win counts, are pulled dynamically from the SQLite database using Django's ORM.
 
-2. **Game Reset:**
-   - Easily restart the game with a button click, allowing for continuous play without refreshing the page.
+2. **Player Setup Page**:
+   - **Description**: This page allows players to enter their names before starting a game. Each player inputs their name, which will be displayed during the game.
+   - **Dynamic Elements**:
+     - **Player Name Inputs**: Fields are provided for entering player names. The names are used throughout the game to indicate whose turn it is.
 
-3. **Win Detection:**
-   - The game checks for winning combinations after each move, declaring a winner or a draw as appropriate.
-
-4. **User Input for Player Names:**
-   - Players can enter their names at the beginning of the game, allowing for a personalized experience.
-  
-5. **Leaderboard:**
-   - The leaderboard is displayed on the home page,
-   - It displays the top 5 players with the most wins.
-
-6. **Database:**
-   - The database is used to store player names and wins.
-   - The database used is SQLite, which is the default database provided by Django.
-   - Django uses a built-in feature called ORM that allows database schema to be defined using Python classes, which correspond to database tables.
+3. **Game Page**:
+   - **Description**: This is the main game board where the Tic Tac Toe game is played. Two players alternate turns, marking either an X or O on the 3x3 grid. The page tracks the current player's turn and updates the board after each move.
+   - **Dynamic Elements**:
+     - **Game Board**: The 3x3 grid dynamically updates to reflect the players' moves.
+     - **Turn Indicator**: The game displays which player’s turn it is, dynamically changing between turns.
+     - **Win Detection**: After each move, the game checks for a winner or a draw and dynamically displays the result.
+     - **Reset Button**: A reset button allows players to restart the game without leaving the page.
 
 ## Development Environment
 
