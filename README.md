@@ -28,7 +28,7 @@ This software aims to offer an enjoyable gameplay experience and help me further
      - **Game Board**: The 3x3 grid dynamically updates to reflect the players' moves.
      - **Turn Indicator**: The game displays which player’s turn it is, dynamically changing between turns.
      - **Win Detection**: After each move, the game checks for a winner or a draw and dynamically displays the result.
-     - **Reset Button**: A reset button allows players to restart the game without leaving the page.
+     - **Reset Button**: A reset button allows players to restart the game without leaving the page or having to change player names.
 
 ## Development Environment
 
