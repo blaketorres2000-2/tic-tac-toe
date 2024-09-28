@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe - Start Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #2c3e50;  /* Darker color for the heading */
+            margin-bottom: 20px;
+            font-size: 35px; /* Larger font size for the heading */
+        }
+
+        p {
+            color: #34495e;  /* Slightly lighter for the paragraph text */
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        h2 {
+            color: #2c3e50;  /* Matching color for subheading */
+            margin-top: 40px; /* Margin to separate from previous elements */
+            font-size: 30px; /* Larger font size for the heading */
+        }
+
+        form {
+            background-color: #ffffff;  /* White background for the form */
+            border: 2px solid rgb(252, 132, 84);
+            border-radius: 10px;  /* Rounded corners */
+            padding: 30px 60px;  /* Inner padding */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);  /* Subtle shadow effect */
+            display: flex; 
+            flex-direction: column;  /* Stack form elements vertically */
+            align-items: center;  /* Center form elements */
+            justify-content: center;  /* Center form vertically */
+            max-width: 500px;  /* Limit form width */
+            margin-bottom: 20px;
+            box-shadow: 8px 6px 15px rgba(252, 132, 84, 0.569); /* Subtle shadow effect */
+        }
+
+        label {
+            font-weight: bold;  /* Bold labels for better readability */
+            display: block;  /* Stack labels vertically */
+            margin: 15px 0 5px;  /* Spacing around labels */
+        }
+
+        input[type="text"] {
+            width: 100%;  /* Full width for inputs */
+            margin: 10px;
+            padding: 10px;  /* Inner padding for comfort */
+            border: 1px solid #ccc;  /* Light gray border */
+            border-radius: 5px;  /* Slightly rounded corners */
+            box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.1);  /* Inner shadow for depth */
+            font-size: 16px;  /* Font size for inputs */
+        }
+
+        input[type="text"]:focus {
+            border-color: #3498db;  /* Blue border on focus */
+            outline: none;  /* Remove default outline */
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);  /* Glow effect on focus */
+        }
+
+        .buttons {
+            margin: 20px 15px;
+            padding: 10px 20px;  /* Increased padding for buttons */
+            font-size: 16px;
+            color: black;
+            cursor: pointer;
+            border-radius: 10px;
+            background-color: rgb(190, 217, 226);
+            box-shadow: 5px 5px 10px rgb(38, 38, 38);
+            border: 1px solid gray;  /* No border for buttons */
+            transition: background-color 0.3s, box-shadow 0.3s;  /* Smooth transitions */
+        }
+
+        .buttons:hover {
+            box-shadow: none;  /* Remove shadow on hover */
+            background-color: rgb(152, 197, 206);  /* Darken the background color on hover */
+        }
+
+        .page_buttons {
+            display: flex;
+            flex-direction: row;
+        }
+
+</style>
+</head>
+<body>
+    <h1>Welcome to Tic Tac Toe!</h1>
+    <p>Enter the names of the players to start the game.</p>
+    <form method="post" action="{% url 'game' %}">
+        {% csrf_token %}
+        <label for="player1">Player 1 (X):</label>
+        <input type="text" id="player1" name="player1" required>
+        <label for="player2">Player 2 (O):</label>
+        <input type="text" id="player2" name="player2" required>
+        <button class="buttons" type="submit">Start Game</button>
+    </form>
+
+    <div class="page_buttons">
+        <a href="{% url 'home' %}" class="buttons">Leaderboard</a>
+        <a href="{% url 'play_game' %}" class="buttons">Game Board</a>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe - Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #2c3e50;  /* Darker color for the heading */
+            margin-bottom: 20px;
+            font-size: 35px; /* Larger font size for the heading */
+        }
+
+        p {
+            color: #34495e;  /* Slightly lighter for the paragraph text */
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        h2 {
+            color: #2c3e50;  /* Matching color for subheading */
+            margin-top: 40px; /* Margin to separate from previous elements */
+            font-size: 30px; /* Larger font size for the heading */
+        }
+
+        .leaderboard {
+            margin-top: 20px;
+            font-size: 25px;
+            padding: 30px;
+            border: 2px solid rgb(252, 132, 84);
+            display: inline-block;
+            background-color: white;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 8px 6px 15px rgba(252, 132, 84, 0.569); /* Subtle shadow effect */
+        }
+
+        .player {
+            margin: 5px 0;
+            color: #34495e; /* Color for player names to match */
+        }
+
+        .buttons {
+            margin: 20px 15px;
+            padding: 10px 20px;  /* Increased padding for buttons */
+            font-size: 16px;
+            color: black;
+            cursor: pointer;
+            border-radius: 10px;
+            background-color: rgb(190, 217, 226);
+            box-shadow: 5px 5px 10px rgb(38, 38, 38);
+            border: 1px solid gray;  /* No border for buttons */
+            transition: background-color 0.3s, box-shadow 0.3s;  /* Smooth transitions */
+        }
+
+        .buttons:hover {
+            box-shadow: none;  /* Remove shadow on hover */
+            background-color: rgb(152, 197, 206);  /* Darken the background color on hover */
+        }
+
+        .page_buttons {
+            display: flex;
+            flex-direction: row;
+            margin: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Welcome to Tic Tac Toe!</h1>
+    <p>Test your skills against friends or challenge yourself!</p>
+    
+    <h2>Top 5 Players</h2>
+    <div class="leaderboard">
+        {% for player in top_players %}
+            <div class="player">
+                {{ player.name }} - Wins: {{ player.wins }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <br>
+    <div class="page_buttons">
+        <a href="{% url 'game' %}" class="buttons">New Game</a>
+        <a href="{% url 'play_game' %}" class="buttons">Game Board</a>
+    </div>
+</body>
+</html>

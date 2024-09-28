@@ -1,0 +1,148 @@
+{% load custom_filters %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Tic Tac Toe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #2c3e50;  /* Darker color for the heading */
+            margin-bottom: 20px;
+            font-size: 35px; /* Larger font size for the heading */
+        }
+
+        p {
+            color: #34495e;  /* Slightly lighter for the paragraph text */
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        h2 {
+            color: #2c3e50;  /* Matching color for subheading */
+            margin-top: 40px; /* Margin to separate from previous elements */
+            font-size: 30px; /* Larger font size for the heading */
+        }
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            gap: 5px;
+        }
+        .cell {
+            width: 100px;
+            height: 100px;
+            background-color: lightgray;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+        .cell.x {
+            background-color: rgb(70,130,180); /* Blue for X */
+            color: white; /* White text for better contrast */
+            font-size: 40px;
+        }
+        .cell.o {
+            background-color: rgb(252, 132, 84); /* Green for O */
+            color: black; /* White text for better contrast */
+            font-size: 40px;
+        }
+        .winner {
+            color: green;
+            font-size: 24px;
+        }
+        .draw {
+            color: orange;
+            font-size: 24px;
+        }
+
+        .button_reset {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding: 10px 20px;  /* Increased padding for buttons */
+            font-size: 16px;
+            color: black;
+            cursor: pointer;
+            border-radius: 10px;
+            background-color: rgb(190, 217, 226);
+            box-shadow: 5px 5px 10px rgb(38, 38, 38);
+            border: none;  /* No border for buttons */
+            transition: background-color 0.3s, box-shadow 0.3s;  /* Smooth transitions */
+        }
+
+        .button_reset:hover {
+            box-shadow: none;  /* Remove shadow on hover */
+            background-color: rgb(152, 197, 206);  /* Darken the background color on hover */
+        }
+
+        .buttons {
+            margin: 20px 15px;
+            padding: 10px 20px;  /* Increased padding for buttons */
+            font-size: 16px;
+            color: black;
+            cursor: pointer;
+            border-radius: 10px;
+            background-color: rgb(190, 217, 226);
+            box-shadow: 5px 5px 10px rgb(38, 38, 38);
+            border: none;  /* No border for buttons */
+            transition: background-color 0.3s, box-shadow 0.3s;  /* Smooth transitions */
+        }
+
+        .buttons:hover {
+            box-shadow: none;  /* Remove shadow on hover */
+            background-color: rgb(152, 197, 206);  /* Darken the background color on hover */
+        }
+
+        .page_buttons {
+            display: flex;
+            flex-direction: row;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Tic Tac Toe</h1>
+    <h2>Current Player: {{ current_player_name }} - {{ current_player }}</h2> <!-- Display the player's name and symbol -->
+
+    {% if winner %}
+        <h2 class="winner">{{ winner }} wins!</h2>
+    {% elif is_draw %}
+        <h2 class="draw">The game is a draw!</h2>
+    {% endif %}
+
+    <form method="post" action="{% url 'play_game' %}">
+        {% csrf_token %}
+        <div class="board">
+            {% for i in indices %}
+                <button type="submit" name="index" value="{{ i }}" class="cell
+                {% if board|get_item:i == 'X' %}x{% elif board|get_item:i == 'O' %}o{% endif %}"
+                {% if board|get_item:i != ' ' or winner or is_draw %}disabled{% endif %}>
+                    {{ board|get_item:i }}
+                </button>
+            {% endfor %}
+        </div>
+    </form>
+    
+    <form method="post" action="{% url 'play_game' %}">
+        {% csrf_token %}
+        <button class="button_reset" type="submit" name="reset" value="true">Reset Game</button>
+    </form>
+    
+    <div class="page_buttons">
+        <a href="{% url 'home' %}" class="buttons">Leaderboard</a>
+        <a href="{% url 'game' %}" class="buttons">New Players</a>
+    </div>
+
+</body>
+</html>
