@@ -2,9 +2,9 @@
 
 ## Overview
 
-As a software developer, I strive to create engaging and interactive applications that enhance user experience. This project focuses on developing a simple yet addictive Tic Tac Toe game using Django, allowing players to challenge each other or play against themselves for practice. The goal is to provide an intuitive interface for players while implementing core game mechanics.
+As a software developer, I strive to create engaging and interactive applications that enhance user experience. This project focuses on developing a simple yet addictive Tic Tac Toe game using Django, allowing players to challenge each other. The goal is to provide an intuitive interface for players while implementing core game mechanics.
 
-The game is built using HTML, CSS, and Django(Python), featuring a clean design and responsive layout. Players can take turns placing their markers (X or O) on a 3x3 grid, with the objective of getting three in a row—either horizontally, vertically, or diagonally.
+The game is built using HTML, CSS, and Python(Django), featuring a clean design and responsive layout. Players can take turns placing their markers (X or O) on a 3x3 grid, with the objective of getting three in a row—either horizontally, vertically, or diagonally.
 
 This software aims to offer an enjoyable gameplay experience and help me further develop my web development skills while applying best practices in Django and web design.
 
@@ -36,7 +36,7 @@ This software aims to offer an enjoyable gameplay experience and help me further
 ## Development Environment
 
 - **Tools Used:** Visual Studio Code, GitHub
-- **Programming Languages:** HTML, CSS, Python (Django)
+- **Programming Languages:** HTML, CSS, Python(Django)
 
 ## Useful Resources
 
